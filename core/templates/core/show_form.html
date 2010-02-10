@@ -1,0 +1,60 @@
+{% load dojango_base %}
+{% load dojango_filters %}
+{% load uni_form_tags %}
+
+<style type="text/css">
+	.ctrlHolder{width:500px;}
+	.ctrlHolder label{margin-top:1em;display:block;}
+	.formHint{display:none;}
+</style>
+
+<script type="text/javascript">
+	dojo.require("dijit.form.Form");
+	{% raw %}
+		{% spaceless %}
+			{% for require in DOJANGO.COLLECTOR %}
+				dojo.require("{{ require }}");
+			{% endfor %}
+		{% endspaceless %}
+	{% endraw %}
+	dojo.require("dijit.form.Form");
+	dojo.require("dijit.form.Button");
+	dojo.ready(function(){
+		dojo.parser.parse(dojo.byId("movieFormBlock"));
+		var btn = dijit.byId("movieFormBtn"),
+			store = moviedb.show.movieStore,
+			grid = dijit.byId("movieGrid"),
+			toaster = dijit.byId('movieAppToaster');
+		btn.connect(btn, "onClick", function(){
+			var frm = dijit.byId("movieForm"),
+				frmVals = frm.attr("value"),
+				item = store.byId({ identity:{{ id }} });
+			store.changing(item);
+			for(var key in frmVals){
+				if(store.hasAttribute(item, key)){
+					// ignoring multi-selects!
+					// would require a rewrite of the json-rest-store-write method
+					item[key] = frmVals[key];
+				}
+			}
+			store.save();
+			grid.render();
+			grid.selection.deselectAll();
+			toaster.setContent('Movie saved.', 'success');
+			toaster.show();
+		});
+	});
+</script>
+
+{% block dojango_content %}
+	<div id="movieFormBlock">
+		<form dojoType="dijit.form.Form" id="movieForm">
+			<fieldset class="inlineLabels">
+				{{ form|as_uni_form }}
+				<div class = "form_block">
+					<button id="movieFormBtn" dojoType="dijit.form.Button">Submit</button>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+{% endblock %}
