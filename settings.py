@@ -98,7 +98,7 @@ DOJANGO_DOJO_DEBUG = False
 
 DOJANGO_BASE_MEDIA_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "dojo-media"))
 DOJANGO_DOJO_BUILD_PROFILES = {
-    'webtechcon': {
+    'dojango-sample': {
         'options': 'profileFile="%(BASE_MEDIA_ROOT)s/dojango-sample.profile.js" action=release optimize=shrinksafe.keepLines cssOptimize=comments.keepLines',
     },
 }
