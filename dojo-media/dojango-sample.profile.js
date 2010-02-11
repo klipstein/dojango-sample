@@ -13,7 +13,7 @@ dependencies = {
         prefixes: [
                 [ "dijit", "../dijit" ],
                 [ "dojox", "../dojox" ],
-                [ "dojango", "../dojango/dojo-media/dojango" ],
+                [ "dojango", "../../../../external_apps/dojango/dojo-media/dojango" ],
                 [ "moviedb", "../../../../core/dojo-media/moviedb"]
         ]
 }
