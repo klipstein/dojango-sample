@@ -92,7 +92,7 @@ INSTALLED_APPS = (
 )
 
 DOJANGO_DOJO_DEBUG = False
-#DOJANGO_DOJO_PROFILE = "local" # local_release, google, aol
+#DOJANGO_DOJO_PROFILE = "local_release" # local, local_release, google, aol
 #DOJANGO_DOJO_VERSION = "1.4.0-dojango-with-dojo"
 #DOJANGO_DOJO_THEME = "nihilo"
 
