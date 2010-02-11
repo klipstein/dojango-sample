@@ -24,7 +24,7 @@ The following apps are used:
 Installation:
 -------------
 
-It is required, that you have installed Python >= 2.4 and Django >= 1.1 before!
+It is required, that you have installed Python >= 2.5 and Django >= 1.1 before!
 
 1. Installing used reusable apps
 2. Creating the database
