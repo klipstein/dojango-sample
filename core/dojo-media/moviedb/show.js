@@ -5,7 +5,7 @@ dojo.require("dijit.layout.BorderContainer");
 dojo.require("dijit.layout.ContentPane");
 dojo.require("dojox.layout.ContentPane");
 dojo.require("dojox.grid.DataGrid");
-//dojo.require("dojox.data.ClientFilter");
+dojo.require("dojox.data.ClientFilter");
 dojo.require("dojox.data.JsonRestStore");
 
 // used for cropping the biography of an actor
