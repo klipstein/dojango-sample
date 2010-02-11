@@ -63,14 +63,16 @@ Just enter the requested information for creating an initial django user.
 3. Loading data
 ---------------
 cd [dojango-sample-dir]
-python manage.py loaddata core/fixtures/post.json # loading sample-data for the tree
-python manage.py loaddata external_apps/movie/fixtures/movies.json
+python manage.py loaddata post # loading sample-data for the tree
+python manage.py loaddata movies # loading some sample movies
+python manage.py loaddata feeds # loading some information, where to get new movies from
 
 
 4. Copy image data
 -------------------
 cd [dojango-sample-dir]
 cp -R external_apps/sandoval/static/images/* static/images
+
 
 5. Start the server
 -------------------
