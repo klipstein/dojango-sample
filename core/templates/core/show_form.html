@@ -2,6 +2,10 @@
 {% load dojango_filters %}
 {% load uni_form_tags %}
 
+{# inject the DOJANGO dict into this request-context #}
+{% set_dojango_context %}
+
+
 <style type="text/css">
 	.ctrlHolder{width:500px;}
 	.ctrlHolder label{margin-top:1em;display:block;}
@@ -9,14 +13,6 @@
 </style>
 
 <script type="text/javascript">
-	dojo.require("dijit.form.Form");
-	{% spaceless %}
-		{% for require in DOJANGO.COLLECTOR %}
-			dojo.require("{{ require }}");
-		{% endfor %}
-	{% endspaceless %}
-	dojo.require("dijit.form.Form");
-	dojo.require("dijit.form.Button");
 	dojo.ready(function(){
 		dojo.parser.parse(dojo.byId("movieFormBlock"));
 		var btn = dijit.byId("movieFormBtn"),
@@ -43,8 +39,6 @@
 		});
 	});
 </script>
-
-{% block dojango_content %}
 	<div id="movieFormBlock">
 		<form dojoType="dijit.form.Form" id="movieForm">
 			<fieldset class="inlineLabels">
@@ -55,4 +49,16 @@
 			</fieldset>
 		</form>
 	</div>
-{% endblock %}
+
+<script type="text/javascript">
+	dojo.require("dijit.form.Form");
+	// needs to appear after the form output, so the collector contains
+	// the require calls
+	{% spaceless %}
+		{% for require in DOJANGO.COLLECTOR %}
+			dojo.require("{{ require }}");
+		{% endfor %}
+	{% endspaceless %}
+	dojo.require("dijit.form.Form");
+	dojo.require("dijit.form.Button");
+</script>
