@@ -12,7 +12,29 @@
 	.formHint{display:none;}
 </style>
 
+<div id="movieFormBlock">
+	<form dojoType="dijit.form.Form" id="movieForm">
+		<fieldset class="inlineLabels">
+			{{ form|as_uni_form }}
+			<div class = "form_block">
+				<button id="movieFormBtn" dojoType="dijit.form.Button">Submit</button>
+			</div>
+		</fieldset>
+	</form>
+</div>
+
 <script type="text/javascript">
+	dojo.require("dijit.form.Form");
+	// needs to appear after the form output, so the collector contains
+	// the require calls
+	{% spaceless %}
+		{% for require in DOJANGO.COLLECTOR %}
+			dojo.require("{{ require }}");
+		{% endfor %}
+	{% endspaceless %}
+	dojo.require("dijit.form.Form");
+	dojo.require("dijit.form.Button");
+	
 	dojo.ready(function(){
 		dojo.parser.parse(dojo.byId("movieFormBlock"));
 		var btn = dijit.byId("movieFormBtn"),
@@ -38,27 +60,5 @@
 			toaster.show();
 		});
 	});
-</script>
-	<div id="movieFormBlock">
-		<form dojoType="dijit.form.Form" id="movieForm">
-			<fieldset class="inlineLabels">
-				{{ form|as_uni_form }}
-				<div class = "form_block">
-					<button id="movieFormBtn" dojoType="dijit.form.Button">Submit</button>
-				</div>
-			</fieldset>
-		</form>
-	</div>
-
-<script type="text/javascript">
-	dojo.require("dijit.form.Form");
-	// needs to appear after the form output, so the collector contains
-	// the require calls
-	{% spaceless %}
-		{% for require in DOJANGO.COLLECTOR %}
-			dojo.require("{{ require }}");
-		{% endfor %}
-	{% endspaceless %}
-	dojo.require("dijit.form.Form");
-	dojo.require("dijit.form.Button");
+	
 </script>
