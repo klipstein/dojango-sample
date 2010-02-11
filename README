@@ -85,3 +85,63 @@ be available from here:
 http://localhost:8000
 
 Enjoy!
+
+
+Play with dojango
+=================
+
+For further details visit: http://code.google.com/p/dojango/wiki/DojoBuild
+
+Doing a Dojo build
+------------------
+1. Get a dojo source release
+2. Do a dojo build
+3. Enable that build for your dojango project
+
+
+1. Get a dojo source release
+-----------------------------
+This is fairly simple, because downloading a specific version of Dojo is integrated
+into manage.py:
+
+cd [dojango-sample-dir]
+python manage.py dojoload
+
+Starts a dojo download of the version, that was defined within DOJANGO_DOJO_VERSION
+(should default to the latest) and places it into:
+
+[dojango-sample-dir]/dojo-media/src/[DOJANGO_DOJO_VERSION]
+
+Of course you now can develop your project using the Dojo source release by enabling it
+in your settings.py:
+
+DOJANGO_DOJO_PROFILE = "local"
+# defaults to the latest version, but can be any version 
+# that is available within src-folder
+# DOJANGO_DOJO_VERSION = "1.4.0"
+
+
+2. Doing a dojo build
+----------------------
+Also the starting of a dojo build is integrated into manage.py and this project
+has an already setupped build profile defined, so you just have to call:
+
+cd [dojango-sample-dir]
+python manage.py dojobuild 
+
+Afterwards there will be built version here:
+
+[dojango-sample-dir]/dojo-media/release/[DOJANGO_DOJO_BUILD_VERSION]-dojango-with-dojo
+
+
+3. Enabling that build
+-----------------------
+
+After the build you are able to switch the Dojo environment of your whole project
+to it. For that you just have to manipulate your [dojango-sample-dir]/settings.py:
+
+DOJANGO_DOJO_PROFILE = "local_release"
+DOJANGO_DOJO_VERSION = "[DOJANGO_DOJO_BUILD_VERSION]-dojango-with-dojo"
+
+If you now reload the initial page on http://localhost:8000 it will require less
+JavaScript files.
