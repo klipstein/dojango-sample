@@ -71,7 +71,7 @@ python manage.py loaddata feeds # loading some information, where to get new mov
 4. Copy image data
 -------------------
 cd [dojango-sample-dir]
-cp -R external_apps/sandoval/static/images/* static/images
+tar xzvf external_apps/movie/fixtures/images.tar.gz
 
 
 5. Start the server
