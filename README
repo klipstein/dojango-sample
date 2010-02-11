@@ -1,3 +1,85 @@
 dojango-sample
---------------
+==============
+
 A sample application how to use dojango in combination with other reusable apps.
+
+The following apps are used:
+
+- dojango: https://dojango.googlecode.com/svn/trunk/dojango:
+  Used for integrating the Dojo Toolkit
+  
+- sandoval: http://github.com/streetcleaner/sandoval:
+  We use this app for having a model and data, we want to show
+  
+- django-uni-form: http://github.com/pydanny/django-uni-form
+  For better and easier form displaying.
+  
+- django-treebeard: http://code.tabo.pe/django-treebeard/
+  Used for showing the capabilities of the TreeStore.
+  
+- django-piston: http://bitbucket.org/jespern/django-piston
+  For creating our own JSON-Rest-API that is used in conjunction with
+  the models from sandoval.
+
+Installation:
+-------------
+
+It is required, that you have installed Python >= 2.4 and Django >= 1.1 before!
+
+1. Installing used reusable apps
+2. Creating the database
+3. Loading data into the database
+4. Copying image data to an accessible place
+5. Starting the server and see it in action
+
+1. Installation of reusable apps
+--------------------------------
+For this installation you need to install SVN, GIT and MERCURIAL before.
+Alternatively you can download the various packages directly from the above
+mentioned websites and place them within the "external_apps" directory.
+
+cd [dojango-sample-dir]
+cd external_apps
+svn export https://dojango.googlecode.com/svn/trunk/dojango
+svn export http://django-tagging.googlecode.com/svn/trunk/tagging
+git clone git://github.com/pydanny/django-uni-form.git
+ln -s django-uni-form/uni_form .
+git clone git://github.com/streetcleaner/sandoval.git
+ln -s sandoval/movie .
+hg clone http://code.tabo.pe/django-treebeard/
+ln -s django-treebeard/treebeard .
+hg clone http://bitbucket.org/jespern/django-piston
+ln -s django-piston/piston .
+
+
+2. Creating the database
+------------------------
+cd [dojango-sample-dir]
+python manage.py syncdb
+
+Just enter the requested information for creating an initial django user.
+
+
+3. Loading data
+---------------
+cd [dojango-sample-dir]
+python manage.py loaddata core/fixtures/post.json # loading sample-data for the tree
+python manage.py loaddata external_apps/movie/fixtures/movies.json
+
+
+4. Copy image data
+-------------------
+cd [dojango-sample-dir]
+cp -R external_apps/sandoval/static/images/* static/images
+
+5. Start the server
+-------------------
+cd [dojango-sample-dir]
+python manage.py runserver
+
+This starts the internal django development server and the application will then
+be available from here:
+
+http://localhost:8000
+
+Enjoy!

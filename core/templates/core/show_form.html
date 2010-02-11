@@ -10,13 +10,11 @@
 
 <script type="text/javascript">
 	dojo.require("dijit.form.Form");
-	{% raw %}
-		{% spaceless %}
-			{% for require in DOJANGO.COLLECTOR %}
-				dojo.require("{{ require }}");
-			{% endfor %}
-		{% endspaceless %}
-	{% endraw %}
+	{% spaceless %}
+		{% for require in DOJANGO.COLLECTOR %}
+			dojo.require("{{ require }}");
+		{% endfor %}
+	{% endspaceless %}
 	dojo.require("dijit.form.Form");
 	dojo.require("dijit.form.Button");
 	dojo.ready(function(){
