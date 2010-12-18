@@ -1,0 +1,9 @@
+{% extends "dojango/base.html" %}
+
+{% block dojango_content %}
+	<div dojoType="dijit.layout.TabContainer" style="width:400px;height:100px;">
+		<div dojoType="dijit.layout.ContentPane" title="My first tab" selected="true">Tab 1 Content</div>
+		<div dojoType="dijit.layout.ContentPane" title="My second tab">Tab 2 Content</div>
+		<div dojoType="dijit.layout.ContentPane" title="My third tab">Tab 3 Content</div>
+	</div>
+{% endblock %}

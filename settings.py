@@ -65,6 +65,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'dojango.middleware.AJAXSimpleExceptionResponse',
     'dojango.middleware.DojoCollector',
 )
 
@@ -102,3 +103,6 @@ DOJANGO_DOJO_BUILD_PROFILES = {
         'options': 'profileFile="%(BASE_MEDIA_ROOT)s/dojango-sample.profile.js" action=release optimize=shrinksafe.keepLines cssOptimize=comments.keepLines',
     },
 }
+DOJANGO_DATAGRID_ACCESS = (
+    'movie.Movie',
+)

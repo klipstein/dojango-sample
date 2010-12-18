@@ -19,6 +19,7 @@ urlpatterns = patterns('',
     (r'^show/(?P<id>.+)/$', 'core.views.show_form'),
     (r'^mptree/$', 'core.views.show_tree'),
     (r'^dojotree/$', 'core.views.dojo_tree'),
+    (r'^tabcontainer/$', 'core.views.show_tab_container'),
 )
 
 if settings.DEBUG:
